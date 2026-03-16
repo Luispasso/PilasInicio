@@ -18,7 +18,6 @@ public class principal
            System.out.println("5. SALIR");
            int n1 = 1, n2 = 5;
            int opc = met.ValidarEntero(sc);
-           opc = met.ValidarRango(n1, n2, opc);
 
            switch (opc) {
             case 1:
@@ -28,11 +27,19 @@ public class principal
                  met.mostar(pila);
                break;
             case 3: 
+                   int num = met.PedirDato(1);
+                   pila = met.Modificar(pila, num);
+
                  break;
             case 4:
+                   int numero= met.PedirDato(3);
+                   pila = met.Elimnar(pila, numero);
                 break;
+                case 5:
+                    seguir = false;
+                    break;
             default:
-                 seguir = false;
+                 System.out.println("OPCION INVALIDA");
                 break;
            }
         }
