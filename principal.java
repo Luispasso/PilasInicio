@@ -28,11 +28,17 @@ public class principal
                break;
             case 3: 
                    int num = met.PedirDato(1);
-                   pila = met.Modificar(pila, num);
+                   int m = met.repetido(pila, opc, num);
+                   if(m != 0)
+                   {
+                   pila = met.Modificar(pila, num, m);
+                   }
 
                  break;
             case 4:
                    int numero= met.PedirDato(3);
+                   int p = met.repetido(pila, opc, numero);
+                   
                    pila = met.Elimnar(pila, numero);
                 break;
                 case 5:

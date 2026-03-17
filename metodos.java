@@ -64,7 +64,6 @@ public class metodos {
             case 1:
                  System.out.println("INGRESE EL NUMERO A MODIFICAR");
                  opc = ValidarEntero(sc);
-                 int m = repetido(null, opc);
                 break;
             case 2 :
                 System.out.println("INGRESE LA MODIFICACION");
@@ -78,15 +77,21 @@ public class metodos {
         return opc;
     }
 
-    public Stack<Integer> Modificar(Stack<Integer> p, int num)
+    public Stack<Integer> Modificar(Stack<Integer> p, int num, int con)
     {
          Stack<Integer> AuxP = new Stack<>();
          int n = p.size();
+         int sw = 1;
          for (int i = 0; i < n; i++) {
            if(p.peek().equals(num))
            {
+            if(sw == 1)
+            {
             p.pop();
             AuxP.push(PedirDato(2));
+            if(con == 1)
+                sw = 0;
+           }
            }
            else
             AuxP.push(p.pop());
@@ -120,16 +125,15 @@ public class metodos {
         return p;
     }
     
-    public int repetido(Stack<Integer> p, int opc)
+    public int repetido(Stack<Integer> p, int opc, int num)
     {
         Stack<Integer> AuxP = new Stack<>();
          int n = p.size(), con = 0;
          for (int i = 0; i < n; i++) {
-           if(p.peek().equals(opc))
+           if(p.peek().equals(num))
            {
             p.pop();
             con++;
-            AuxP.push(PedirDato(2));
            }
            else
             AuxP.push(p.pop());
@@ -139,7 +143,18 @@ public class metodos {
          {
               System.out.println("NUMERO NO EXISTE");
          }
-     
+        else if(opc == 3 && con > 1)
+        {
+            System.out.println("1. MODIFICAR EL PRIMER DATO ENCONTRADO");
+            System.out.println("2. MODIFICAR TODOS LOS DATOS ");
+            con = ValidarEntero(sc);
+        }
+        else if(opc == 4 && con > 1)
+        {
+            System.out.println("1. ELIMINAR EL PRIMER DATO ENCONTRADO");
+            System.out.println("2. ELIMINAR TODOS LOS DATOS ");
+            con = ValidarEntero(sc);
+        }
         return con;
     }
    
